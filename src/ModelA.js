@@ -5,12 +5,17 @@ Command: npx gltfjsx@6.1.4 exemplo1.glb
 
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
-import { Parafuso } from "./Parafuso";
+import { useSpring, a } from "@react-spring/three";
 
-export function ModelA({ props }) {
+export function ModelA({ isClicked }) {
   const { nodes, materials } = useGLTF("/exemplo1.glb");
+
+  const spring = useSpring({
+    scale: isClicked ? [0, 0, 0] : [1, 1, 1],
+  });
+
   return (
-    <group {...props} dispose={null} scale={1}>
+    <a.group dispose={null} scale={spring.scale}>
       {/* <group position={[3.1, 0.06, 1]}>
         <mesh
           geometry={nodes.Sphere_1.geometry}
@@ -56,7 +61,7 @@ export function ModelA({ props }) {
         material={materials["bc51242c-c05c-4b88-a6d8-af5eb4c0e47c"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -73,7 +78,7 @@ export function ModelA({ props }) {
         material={materials["22e1d26f-f6aa-4d8d-a668-2d30d80e71d9"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -90,7 +95,7 @@ export function ModelA({ props }) {
         material={materials["adfef932-109c-4049-b750-efbfa4167eae"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -107,7 +112,7 @@ export function ModelA({ props }) {
         material={materials["b26c74f3-991a-4f2f-82da-c06eed6635da"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -124,7 +129,7 @@ export function ModelA({ props }) {
         material={materials["fc27dba0-e84a-4577-8d1a-f1bdb51e6b20"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -141,7 +146,7 @@ export function ModelA({ props }) {
         material={materials["3da18ffa-5b99-492c-87c4-dc5dc35ed3df"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -158,7 +163,7 @@ export function ModelA({ props }) {
         material={materials["9e82a8b2-f70f-42c4-830d-651c52e590a7"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -175,7 +180,7 @@ export function ModelA({ props }) {
         material={materials["37f9e98a-80ef-49dd-9a11-d298288b955b"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -192,7 +197,7 @@ export function ModelA({ props }) {
         material={materials["fecbf07a-0d72-479e-99fa-0ac8bc3c1b58"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -209,7 +214,7 @@ export function ModelA({ props }) {
         material={materials["4d485e9f-c74b-4bdb-9c04-ee7f943212bb"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -226,7 +231,7 @@ export function ModelA({ props }) {
         material={materials["c1f12724-77f3-4824-8ec2-47fdc83ebb7a"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -243,7 +248,7 @@ export function ModelA({ props }) {
         material={materials["1ec2ccf2-8b6d-4091-bd7b-fa7c40fda390"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -260,7 +265,7 @@ export function ModelA({ props }) {
         material={materials["433d1612-0dec-4f73-8804-dcc531f8e312"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -277,7 +282,7 @@ export function ModelA({ props }) {
         material={materials["ca80384e-6b36-4113-b2e8-bfd6ceb27863"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -294,7 +299,7 @@ export function ModelA({ props }) {
         material={materials["d51ca273-6de3-4c13-b85f-e4c0434f7cfb"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -311,7 +316,7 @@ export function ModelA({ props }) {
         material={materials["a7cd08f0-267f-466c-9e83-82f8d9322d7f"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -328,7 +333,7 @@ export function ModelA({ props }) {
         material={materials["abe3d5b4-874e-4331-86fb-1394c9858e6a"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -345,7 +350,7 @@ export function ModelA({ props }) {
         material={materials["d4ae8aab-8bed-43d6-9cbb-b62ec2366a7e"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -362,7 +367,7 @@ export function ModelA({ props }) {
         material={materials["fb59d0fa-98ad-4646-af75-5aab0578ec95"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -379,7 +384,7 @@ export function ModelA({ props }) {
         material={materials["b0d00204-1fcb-4b36-bbca-b54d19dd7417"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -396,7 +401,7 @@ export function ModelA({ props }) {
         material={materials["8ada355b-eac1-49df-9760-e3c63de9b610"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -413,7 +418,7 @@ export function ModelA({ props }) {
         material={materials["0422f89c-0b9e-4bb9-8820-655ab74257c7"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -430,7 +435,7 @@ export function ModelA({ props }) {
         material={materials["417d9b18-0274-4d3b-b85e-bd1af8d8bb6c"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -447,7 +452,7 @@ export function ModelA({ props }) {
         material={materials["ef76e108-e3ae-484b-86df-072698c88d9e"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -464,7 +469,7 @@ export function ModelA({ props }) {
         material={materials["b3e2c76c-c75f-4120-b058-f2d530e9d0ec"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -481,7 +486,7 @@ export function ModelA({ props }) {
         material={materials["819ffdfa-77b4-4418-b8fd-6bd387730d0d"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -498,7 +503,7 @@ export function ModelA({ props }) {
         material={materials["5300a033-51c3-43af-95be-254994ebd9aa"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -515,7 +520,7 @@ export function ModelA({ props }) {
         material={materials["ec09b5d1-2c16-49ef-a94b-1eb17017ad2a"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -532,7 +537,7 @@ export function ModelA({ props }) {
         material={materials["8e41cecb-59ac-4eb2-8751-041043bfa12f"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -549,7 +554,7 @@ export function ModelA({ props }) {
         material={materials["936a5e89-cbb3-41b5-8180-84c7b4411125"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -566,7 +571,7 @@ export function ModelA({ props }) {
         material={materials["407806cf-633e-49dc-a486-743eaece2d5c"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -583,7 +588,7 @@ export function ModelA({ props }) {
         material={materials["f2b11342-054f-4f2f-8b52-871a5536cbd6"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -600,7 +605,7 @@ export function ModelA({ props }) {
         material={materials["d9c4eb0e-88e6-4208-bff0-dc6aafcb7aa0"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -617,7 +622,7 @@ export function ModelA({ props }) {
         material={materials["86c0265b-f895-478a-8aca-718754bf91de"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -634,7 +639,7 @@ export function ModelA({ props }) {
         material={materials["27a6e38f-f9d7-4a7d-90f5-f9e674a58c71"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -651,7 +656,7 @@ export function ModelA({ props }) {
         material={materials["5fe32662-c502-4efc-9290-2d27143c5b6e"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -668,7 +673,7 @@ export function ModelA({ props }) {
         material={materials["be5ad20f-b58a-48c4-9f1d-093b8d1d385f"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -685,7 +690,7 @@ export function ModelA({ props }) {
         material={materials["e69d8f85-1387-4d4c-9fd7-0dfd5032a181"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -702,7 +707,7 @@ export function ModelA({ props }) {
         material={materials["2758364a-686a-4bf4-8369-2e5fd377254b"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -719,7 +724,7 @@ export function ModelA({ props }) {
         material={materials["ff8e6fe5-e73c-417d-9313-d98d4db12832"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -736,7 +741,7 @@ export function ModelA({ props }) {
         material={materials["82098b8a-1abb-45eb-bf6a-7e30a99d6603"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -753,7 +758,7 @@ export function ModelA({ props }) {
         material={materials["c69378bc-14e0-41a3-9cfd-28ed113d9c27"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -770,7 +775,7 @@ export function ModelA({ props }) {
         material={materials["50a07011-8a4d-49b8-9faa-9c5ba5bd9146"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -787,7 +792,7 @@ export function ModelA({ props }) {
         material={materials["048c8acb-9c77-4a69-ad8a-b7a8e55fe380"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -804,7 +809,7 @@ export function ModelA({ props }) {
         material={materials["d26625b9-c0c2-4acc-afcc-ea4a4820f8ee"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -821,7 +826,7 @@ export function ModelA({ props }) {
         material={materials["63687b45-095e-440a-882e-d8a56b8a60e6"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -838,7 +843,7 @@ export function ModelA({ props }) {
         material={materials["e0aa15d5-40fd-4d72-895e-83ab9c55d1ec"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -855,7 +860,7 @@ export function ModelA({ props }) {
         material={materials["04540ee8-7279-458e-bbc7-f465345c0f89"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -872,7 +877,7 @@ export function ModelA({ props }) {
         material={materials["8a79486c-4fae-4d76-ac65-bf0ce98785aa"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -889,7 +894,7 @@ export function ModelA({ props }) {
         material={materials["e5294b30-d76e-4a1b-a5be-6d27a95f7555"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -906,7 +911,7 @@ export function ModelA({ props }) {
         material={materials["a08a9f1b-7d86-4775-a9e9-8b8c4974bd52"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -923,7 +928,7 @@ export function ModelA({ props }) {
         material={materials["c6dc6037-963a-4f6a-bf24-6771ff2cdb2c"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -940,7 +945,7 @@ export function ModelA({ props }) {
         material={materials["786cc47a-4bbd-47c1-8a8f-61533fa7a5b8"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -957,7 +962,7 @@ export function ModelA({ props }) {
         material={materials["8c3ca78c-9e54-451f-b5c2-b13029cf51c8"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -974,7 +979,7 @@ export function ModelA({ props }) {
         material={materials["c1f6fcc0-7f5b-461d-a603-2d7865b1e52c"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -991,7 +996,7 @@ export function ModelA({ props }) {
         material={materials["0474ae2b-ef5f-4895-bdcd-6078a60b8c88"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1008,7 +1013,7 @@ export function ModelA({ props }) {
         material={materials["39d28070-d827-4637-bf3e-401c59cc0557"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1025,7 +1030,7 @@ export function ModelA({ props }) {
         material={materials["0a082893-f4e9-49d6-a9c2-8bdab476a9bb"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1042,7 +1047,7 @@ export function ModelA({ props }) {
         material={materials["a37db0f2-9f75-49f6-9025-9ee41a47783b"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1059,7 +1064,7 @@ export function ModelA({ props }) {
         material={materials["00469475-ab7e-4e73-9a4a-e556ca538034"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1076,7 +1081,7 @@ export function ModelA({ props }) {
         material={materials["1a45480b-d17b-41ae-b35a-4ff52a904004"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1093,7 +1098,7 @@ export function ModelA({ props }) {
         material={materials["d896e225-e898-42ee-9175-61d012136515"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1110,7 +1115,7 @@ export function ModelA({ props }) {
         material={materials["49c59ed4-b9e2-4480-ac96-c59cac8459cd"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1127,7 +1132,7 @@ export function ModelA({ props }) {
         material={materials["714f353e-09be-4174-b87a-4a80dd8c7a87"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1144,7 +1149,7 @@ export function ModelA({ props }) {
         material={materials["11c54c03-6b46-4997-80d9-0adc0b069b31"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1161,7 +1166,7 @@ export function ModelA({ props }) {
         material={materials["bf7133ec-2456-4564-a63e-0000407fde12"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1178,7 +1183,7 @@ export function ModelA({ props }) {
         material={materials["635c0b23-6276-4356-b5c3-2ae315d3d3f3"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1195,7 +1200,7 @@ export function ModelA({ props }) {
         material={materials["1e38624c-6d77-49a6-b527-9387c6d264ad"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1212,7 +1217,7 @@ export function ModelA({ props }) {
         material={materials["e6a39516-d531-4028-a4be-e4facc29aebd"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1229,7 +1234,7 @@ export function ModelA({ props }) {
         material={materials["092bf0ae-2406-4f8f-ad40-ad3f4d8bb64f"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1246,7 +1251,7 @@ export function ModelA({ props }) {
         material={materials["2c102cd7-32b1-44de-8c70-fa3ed937e7c0"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1263,7 +1268,7 @@ export function ModelA({ props }) {
         material={materials["ef5ea542-3df7-4201-bf70-c8e343355b47"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1280,7 +1285,7 @@ export function ModelA({ props }) {
         material={materials["05a6d82c-a649-4566-91b9-b4bd19c9f01f"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1297,7 +1302,7 @@ export function ModelA({ props }) {
         material={materials["b7422867-269d-4ee8-8bfb-d20ac7972f94"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1314,7 +1319,7 @@ export function ModelA({ props }) {
         material={materials["2a80731e-4054-47dc-a792-02494c9e92a7"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1331,7 +1336,7 @@ export function ModelA({ props }) {
         material={materials["8abd4ed5-73fb-473b-9ba6-35038f842b7c"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1348,7 +1353,7 @@ export function ModelA({ props }) {
         material={materials["df446151-0637-4623-a509-b28907a1a402"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1365,7 +1370,7 @@ export function ModelA({ props }) {
         material={materials["14d72964-b9be-41d7-bc9c-e322338669c0"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1382,7 +1387,7 @@ export function ModelA({ props }) {
         material={materials["315b8cd1-61d1-4b81-9deb-15207fec4321"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1399,7 +1404,7 @@ export function ModelA({ props }) {
         material={materials["c1a70b64-a800-42e2-aa20-97e02d3330aa"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1416,7 +1421,7 @@ export function ModelA({ props }) {
         material={materials["669d747b-b84d-4a90-88ec-17653d022c0c"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1433,7 +1438,7 @@ export function ModelA({ props }) {
         material={materials["6d8f207f-3519-40bf-9dd6-cc559fd875b5"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1450,7 +1455,7 @@ export function ModelA({ props }) {
         material={materials["9c9f129c-f41f-4aa8-a8b0-a43a15cefa26"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1467,7 +1472,7 @@ export function ModelA({ props }) {
         material={materials["5ac80981-ea7e-4275-be14-0203812257c5"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1484,7 +1489,7 @@ export function ModelA({ props }) {
         material={materials["7f707c63-7d15-4fda-87c9-e0595328a90c"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1501,7 +1506,7 @@ export function ModelA({ props }) {
         material={materials["b2960775-d956-475b-8c78-e1392aad3285"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1518,7 +1523,7 @@ export function ModelA({ props }) {
         material={materials["936fbd27-73cf-40ed-a18b-15900ecae4f9"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1535,7 +1540,7 @@ export function ModelA({ props }) {
         material={materials["946b2c32-7211-427a-bc18-a376d975c258"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1552,7 +1557,7 @@ export function ModelA({ props }) {
         material={materials["0f54df9f-9b0e-42c0-865e-6f57a4ec9458"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1569,7 +1574,7 @@ export function ModelA({ props }) {
         material={materials["c57ac763-2fb6-488c-9e7a-b83a4a9682aa"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1586,7 +1591,7 @@ export function ModelA({ props }) {
         material={materials["944fb1df-10da-4fb0-93c2-99bd661be708"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1603,7 +1608,7 @@ export function ModelA({ props }) {
         material={materials["acd1bc23-c8e5-42f8-ae18-26f41a82e082"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1620,7 +1625,7 @@ export function ModelA({ props }) {
         material={materials["cd3c91f5-f77a-4632-9e2c-3446104f633c"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1637,7 +1642,7 @@ export function ModelA({ props }) {
         material={materials["bbc33c4c-0748-40e8-aba0-371dc9478fbf"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1654,7 +1659,7 @@ export function ModelA({ props }) {
         material={materials["8561ecc6-9777-47ed-9a33-d0cdaabd175e"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1671,7 +1676,7 @@ export function ModelA({ props }) {
         material={materials["f345c91f-9cc8-4187-ba79-23f334ecb491"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1688,7 +1693,7 @@ export function ModelA({ props }) {
         material={materials["d2d176ad-d351-4536-bed5-540ba7a60d9f"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1705,7 +1710,7 @@ export function ModelA({ props }) {
         material={materials["e0de32e7-e763-4ac0-88c2-b59e3d48c918"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1722,7 +1727,7 @@ export function ModelA({ props }) {
         material={materials["246d1ad5-70e9-4e98-944a-b64a5e2e4cce"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1739,7 +1744,7 @@ export function ModelA({ props }) {
         material={materials["91e4b6d9-e87b-4994-9b16-102e64dd97c9"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1756,7 +1761,7 @@ export function ModelA({ props }) {
         material={materials["4bf2100d-cecf-41b5-962f-4195ad74f8d7"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1773,7 +1778,7 @@ export function ModelA({ props }) {
         material={materials["2342778a-2b51-4f3d-975f-35c403eb9126"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1790,7 +1795,7 @@ export function ModelA({ props }) {
         material={materials["c9cac816-8fa0-4600-b2b6-392cf0bff749"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1807,7 +1812,7 @@ export function ModelA({ props }) {
         material={materials["1ef5c5c9-04db-4fe8-8087-7a59798f8a03"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1824,7 +1829,7 @@ export function ModelA({ props }) {
         material={materials["b6bf07bd-2f83-4407-a3e9-8a7e8700729c"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1841,7 +1846,7 @@ export function ModelA({ props }) {
         material={materials["9f4cf231-e470-4dc1-a6a0-2b2922925602"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1858,7 +1863,7 @@ export function ModelA({ props }) {
         material={materials["3ec9109a-0a8b-4645-a0b8-8e7c0929e879"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1875,7 +1880,7 @@ export function ModelA({ props }) {
         material={materials["44679292-6b5b-4826-9de5-08d87ed0de61"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1892,7 +1897,7 @@ export function ModelA({ props }) {
         material={materials["dc9aa53e-633e-4d45-aef3-461abe88698e"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1909,7 +1914,7 @@ export function ModelA({ props }) {
         material={materials["57e48bc9-62bc-4b93-83b1-c30f54425682"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1926,7 +1931,7 @@ export function ModelA({ props }) {
         material={materials["98a265d1-5648-4ce6-824f-9e6f395a09d3"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1943,7 +1948,7 @@ export function ModelA({ props }) {
         material={materials["73f6e99b-b179-40bd-b07e-c7df331b2f3a"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1960,7 +1965,7 @@ export function ModelA({ props }) {
         material={materials["838ec78b-cd97-4ea4-9c82-2057c7c4ca9f"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1977,7 +1982,7 @@ export function ModelA({ props }) {
         material={materials["c2ee47e8-0f72-46c5-92d5-bcfa0bc93bf9"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -1994,7 +1999,7 @@ export function ModelA({ props }) {
         material={materials["c8b3c2e1-e774-422a-b968-b85a4d8b08d3"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2011,7 +2016,7 @@ export function ModelA({ props }) {
         material={materials["dff832d6-b3fb-41f9-b383-9dbba87149d4"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2028,7 +2033,7 @@ export function ModelA({ props }) {
         material={materials["d503a627-140e-44c2-ab46-d654a1b4c537"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2045,7 +2050,7 @@ export function ModelA({ props }) {
         material={materials["b9e5e0d1-9f7b-4fbb-9b56-fc23ab9008b6"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2062,7 +2067,7 @@ export function ModelA({ props }) {
         material={materials["4ea0bdf5-f1a8-4520-a7ce-a102fac22731"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2079,7 +2084,7 @@ export function ModelA({ props }) {
         material={materials["069e309f-25cd-4512-a273-6ce221d95de8"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2096,7 +2101,7 @@ export function ModelA({ props }) {
         material={materials["1b7d2e74-d921-4ccb-908b-abe15da2af99"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2113,7 +2118,7 @@ export function ModelA({ props }) {
         material={materials["c14c2619-f80c-4ae5-9564-a9c8932e32c3"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2130,7 +2135,7 @@ export function ModelA({ props }) {
         material={materials["f415307e-f1bf-4e96-9aaf-b6cf74db867c"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2147,7 +2152,7 @@ export function ModelA({ props }) {
         material={materials["adcc2b10-090e-4345-add2-694c71415328"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2164,7 +2169,7 @@ export function ModelA({ props }) {
         material={materials["65c058fc-c510-4a29-aea4-a18812251077"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2181,7 +2186,7 @@ export function ModelA({ props }) {
         material={materials["a2600cc4-c1eb-466f-a127-1b0e3fbf4519"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2198,7 +2203,7 @@ export function ModelA({ props }) {
         material={materials["e8d91576-974f-4680-8b25-8e895e4bbe92"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2215,7 +2220,7 @@ export function ModelA({ props }) {
         material={materials["09d6e4e7-40cd-430e-a807-8e1918358622"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2232,7 +2237,7 @@ export function ModelA({ props }) {
         material={materials["508b2ea8-a991-4816-8271-189adf31a27d"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2249,7 +2254,7 @@ export function ModelA({ props }) {
         material={materials["e8883deb-e4d0-47f8-bc8f-1c57bd452f91"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2266,7 +2271,7 @@ export function ModelA({ props }) {
         material={materials["48a0d62a-8df5-4d91-b1ed-ee6f22fc0402"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2283,7 +2288,7 @@ export function ModelA({ props }) {
         material={materials["d86acf91-eb30-49a1-b6fa-d591480d5428"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2300,7 +2305,7 @@ export function ModelA({ props }) {
         material={materials["bb6fb407-6e3e-4f82-8692-bc978fe90dbb"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2317,7 +2322,7 @@ export function ModelA({ props }) {
         material={materials["bece8d86-f8c1-4879-a4d2-74fa6263bbd3"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2334,7 +2339,7 @@ export function ModelA({ props }) {
         material={materials["265fcb05-a483-4c56-8569-2aac88ee8318"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2351,7 +2356,7 @@ export function ModelA({ props }) {
         material={materials["587ea0a7-fd08-4c76-9823-e825522ecf54"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2368,7 +2373,7 @@ export function ModelA({ props }) {
         material={materials["57689e85-609c-4c9b-a75f-bd83c2a9a0c0"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2385,7 +2390,7 @@ export function ModelA({ props }) {
         material={materials["05eed906-a890-4f9e-97fd-2ab2baf025a6"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2402,7 +2407,7 @@ export function ModelA({ props }) {
         material={materials["dc8bde02-c267-4b2f-b177-a736380ca611"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2419,7 +2424,7 @@ export function ModelA({ props }) {
         material={materials["c2218912-2758-4a5f-bf18-48c4a77fc18c"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2436,7 +2441,7 @@ export function ModelA({ props }) {
         material={materials["26a82405-cdb1-4f7a-9fb7-e48cae3f3ab3"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2453,7 +2458,7 @@ export function ModelA({ props }) {
         material={materials["b7a46024-60d7-4a35-9280-3a6d96855f6a"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2470,7 +2475,7 @@ export function ModelA({ props }) {
         material={materials["54c174df-9e25-4e3b-8e23-c801fb6b4b56"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2487,7 +2492,7 @@ export function ModelA({ props }) {
         material={materials["04e5f44d-bd28-430f-ab8c-5e25aa668da3"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2504,7 +2509,7 @@ export function ModelA({ props }) {
         material={materials["23054a35-0e67-4b30-ae3d-d9f74d78ff7b"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2521,7 +2526,7 @@ export function ModelA({ props }) {
         material={materials["1f311394-f146-47e3-84a7-e19f637345f3"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2538,7 +2543,7 @@ export function ModelA({ props }) {
         material={materials["8d430aae-b3ba-4dce-900e-572a605268d5"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2555,7 +2560,7 @@ export function ModelA({ props }) {
         material={materials["dfac0ce6-f1ef-4812-809f-e33517924bc5"]}
         position={[0, 0.05, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2572,7 +2577,7 @@ export function ModelA({ props }) {
         material={materials["33bebc2c-a2cd-4856-9c7e-320978937328"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2589,7 +2594,7 @@ export function ModelA({ props }) {
         material={materials["f2ce9195-dd65-4a2c-bef5-d45e11ba7797"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2606,7 +2611,7 @@ export function ModelA({ props }) {
         material={materials["40eedf6f-49d1-4cc0-b280-f8946b506a89"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2623,7 +2628,7 @@ export function ModelA({ props }) {
         material={materials["1b7f7323-7367-4e65-a7f6-c11c0c9716b2"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2640,7 +2645,7 @@ export function ModelA({ props }) {
         material={materials["3435a5b0-9e75-43d4-88c1-5c0b41c099aa"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2657,7 +2662,7 @@ export function ModelA({ props }) {
         material={materials["ce48bcc3-dd78-4a8f-aaf6-89d023803615"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2674,7 +2679,7 @@ export function ModelA({ props }) {
         material={materials["335fc784-e3f9-474b-8057-e1ab713640f9"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2691,7 +2696,7 @@ export function ModelA({ props }) {
         material={materials["8f688f43-8bb0-42f3-8bd9-f1d7c9cdffe6"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2708,7 +2713,7 @@ export function ModelA({ props }) {
         material={materials["679d5aa4-a7e1-4dbc-971d-0a697cbf37a8"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2725,7 +2730,7 @@ export function ModelA({ props }) {
         material={materials["cacf5d6d-32ff-486c-b8be-8cbf793122d7"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2742,7 +2747,7 @@ export function ModelA({ props }) {
         material={materials["ca83eb5a-635b-4315-82bc-4403012cd854"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2759,7 +2764,7 @@ export function ModelA({ props }) {
         material={materials["6b077ef2-c623-4907-bb34-2165ebb20acc"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2776,7 +2781,7 @@ export function ModelA({ props }) {
         material={materials["05b32669-adc3-4fcf-a067-76e04b7baee8"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2793,7 +2798,7 @@ export function ModelA({ props }) {
         material={materials["bb492e00-71e6-4a69-b6c2-c1c07d667a5c"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2810,7 +2815,7 @@ export function ModelA({ props }) {
         material={materials["36b9079b-a35b-4618-b4d8-ad8553817d88"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2827,7 +2832,7 @@ export function ModelA({ props }) {
         material={materials["0e32f08f-d678-463b-9004-2f0d4e82f7ad"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2844,7 +2849,7 @@ export function ModelA({ props }) {
         material={materials["94a38844-b1ac-4ec0-a983-633bb4e8f98f"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2861,7 +2866,7 @@ export function ModelA({ props }) {
         material={materials["4b3a740f-ec21-4b0c-b160-72c0f8d57ec7"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2878,7 +2883,7 @@ export function ModelA({ props }) {
         material={materials["ee7101c1-f0f7-4dcd-a6c6-06d976d2b06f"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2895,7 +2900,7 @@ export function ModelA({ props }) {
         material={materials["294ffabe-75bb-4375-8f7e-54ca08fe8883"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2912,7 +2917,7 @@ export function ModelA({ props }) {
         material={materials["87024416-de73-4082-8ced-487e7b579ba2"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2929,7 +2934,7 @@ export function ModelA({ props }) {
         material={materials["8a78b648-0d97-4555-bb41-61669e0bb453"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2946,7 +2951,7 @@ export function ModelA({ props }) {
         material={materials["1a9fdcb3-acec-42ec-b934-b849811e945f"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2963,7 +2968,7 @@ export function ModelA({ props }) {
         material={materials["e67a5e80-ab1c-4458-b419-246ac0a4b407"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2980,7 +2985,7 @@ export function ModelA({ props }) {
         material={materials["01ea8425-7bb4-4f18-bdd5-9b70ff28cf86"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -2997,7 +3002,7 @@ export function ModelA({ props }) {
         material={materials["1065aee3-ff95-4e83-9686-6184c91e4ba5"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3014,7 +3019,7 @@ export function ModelA({ props }) {
         material={materials["4a2f1c80-4dd2-4acc-9c49-75a723763ff4"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3031,7 +3036,7 @@ export function ModelA({ props }) {
         material={materials["7d01362f-8da3-43b1-8ed7-5c310039ce1e"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3048,7 +3053,7 @@ export function ModelA({ props }) {
         material={materials["f0842d60-27c7-4f6f-8905-312364f519bb"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3065,7 +3070,7 @@ export function ModelA({ props }) {
         material={materials["8ef34dcf-2c17-47fd-9040-bad425aa1b2d"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3082,7 +3087,7 @@ export function ModelA({ props }) {
         material={materials["c14de917-eea5-4d01-8e23-67af512d8f46"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3099,7 +3104,7 @@ export function ModelA({ props }) {
         material={materials["dfc13ae9-809a-47ea-bdcf-272c178848ca"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3116,7 +3121,7 @@ export function ModelA({ props }) {
         material={materials["79f07a36-562f-423d-b132-ee5104f49296"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3133,7 +3138,7 @@ export function ModelA({ props }) {
         material={materials["9c6c4069-efe3-4633-b2b4-81dc0b3c546f"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3150,7 +3155,7 @@ export function ModelA({ props }) {
         material={materials["a91b7c0b-6624-4545-aa21-dc76fac9babb"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3167,7 +3172,7 @@ export function ModelA({ props }) {
         material={materials["97c352ec-3a3b-4867-a3a2-5dafd89882b0"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3184,7 +3189,7 @@ export function ModelA({ props }) {
         material={materials["ac20c545-5c6b-41bb-9d8a-b26a5bf40bf9"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3201,7 +3206,7 @@ export function ModelA({ props }) {
         material={materials["d44c0aa4-50a7-4877-af02-383dedff4085"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3218,7 +3223,7 @@ export function ModelA({ props }) {
         material={materials["be429221-9772-4257-88bd-f49086fe61a8"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3235,7 +3240,7 @@ export function ModelA({ props }) {
         material={materials["1ed69953-df11-49aa-a9dc-ba60d49d7746"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3252,7 +3257,7 @@ export function ModelA({ props }) {
         material={materials["e61dd23c-2658-4f59-b4e4-685d919c147a"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3269,7 +3274,7 @@ export function ModelA({ props }) {
         material={materials["64a13a71-9153-427e-8803-acfd42bb588a"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3286,7 +3291,7 @@ export function ModelA({ props }) {
         material={materials["f2b9d1e9-9850-450d-955a-89a99295eaf5"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3303,7 +3308,7 @@ export function ModelA({ props }) {
         material={materials["0f822fe9-a504-4bac-b9ce-445d9503d2e3"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3320,7 +3325,7 @@ export function ModelA({ props }) {
         material={materials["f30d1010-7a96-4244-bb0c-24eedc174dfc"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3337,7 +3342,7 @@ export function ModelA({ props }) {
         material={materials["3f1915a8-5c88-469a-bfdc-8d85105b6f42"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3354,7 +3359,7 @@ export function ModelA({ props }) {
         material={materials["c28976cb-c708-44c2-868c-4a2efcfeae82"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3371,7 +3376,7 @@ export function ModelA({ props }) {
         material={materials["961723a8-775f-44d1-877c-6f04e5f4fdd6"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3388,7 +3393,7 @@ export function ModelA({ props }) {
         material={materials["d152c062-6ab7-43b6-9a54-8d2abbd2c33b"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3405,7 +3410,7 @@ export function ModelA({ props }) {
         material={materials["30911c1e-473e-4cfc-bede-59cd5e456803"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3422,7 +3427,7 @@ export function ModelA({ props }) {
         material={materials["c47baf01-16ad-4f41-9e86-9df32eeebff9"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3439,7 +3444,7 @@ export function ModelA({ props }) {
         material={materials["ca80d886-da2c-44f0-b31b-68c75e7204c9"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3456,7 +3461,7 @@ export function ModelA({ props }) {
         material={materials["6a2a73cd-95a0-48d2-93d3-5b724b8f7b31"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3473,7 +3478,7 @@ export function ModelA({ props }) {
         material={materials["4107e22b-30ec-4224-ac93-3a32d682eb50"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3490,7 +3495,7 @@ export function ModelA({ props }) {
         material={materials["76ca918d-ae37-46ce-b618-caa1aed241ea"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3507,7 +3512,7 @@ export function ModelA({ props }) {
         material={materials["aa7292c6-dd2c-4639-a2a9-1eaa82e990bd"]}
         position={[0, 0.06, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        scale={0.1}
+        scale={0.5}
       >
         <meshPhysicalMaterial
           color="#fff"
@@ -3519,7 +3524,7 @@ export function ModelA({ props }) {
           iridescenseThicknessRange={[100, 1000]}
         />
       </mesh>
-    </group>
+    </a.group>
   );
 }
 

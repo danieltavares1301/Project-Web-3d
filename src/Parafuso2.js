@@ -21,13 +21,14 @@ const TextObj = ({ isClicked, X, Y, Z, text }) => {
       anchorY="middle" // default
       position={[X, Y, Z]}
       visible={isClicked}
+      rotation={[-Math.PI / -2, 0, 0]}
     >
       {text}
     </Text>
   );
 };
 
-export function Parafuso({ isClicked, setIsClicked, visible }) {
+export function ParafusoB({ visible, isClicked, setIsClicked }) {
   const { nodes, materials } = useGLTF("/parafuso.glb");
   const mesh = useRef();
   const meshPhysicalMaterial = useRef();
@@ -57,32 +58,19 @@ export function Parafuso({ isClicked, setIsClicked, visible }) {
 
   // faz com que o parafuso mude de posição lentamente
   const meshSpring = useSpring({
-    position: isClicked ? [0, 25, 0] : [0, -25, 0],
+    position: isClicked ? [0, 25, 0] : [0, -30, 79],
+    rotation: [-Math.PI / -1, 0, 0],
   });
 
   return (
-    <group dispose={null} scale={[0.5, 0.4, 0.5]} visible={visible}>
+    <group dispose={null} scale={[0.5, 0.4, 0.3]} visible={visible}>
       <mesh>
         <TextObj
-          X={15}
+          X={16.2}
           Y={20}
-          Z={0}
+          Z={-10}
           isClicked={isClicked}
           text={"Parafuso XYZ"}
-        />
-        <TextObj
-          X={16.2}
-          Y={15}
-          Z={0}
-          isClicked={isClicked}
-          text={"Tamanho: 10cm"}
-        />
-        <TextObj
-          X={16.6}
-          Y={10}
-          Z={0}
-          isClicked={isClicked}
-          text={"Em estoque: SIM"}
         />
       </mesh>
       <a.mesh
@@ -90,7 +78,7 @@ export function Parafuso({ isClicked, setIsClicked, visible }) {
         ref={mesh}
         geometry={nodes.Object_2.geometry}
         material={materials.PARAFUSO_material}
-        rotation={[-Math.PI / -2, 0, 0]}
+        rotation={meshSpring.rotation}
         position={meshSpring.position}
         onClick={() => {
           isClicked ? setIsClicked(false) : setIsClicked(true);

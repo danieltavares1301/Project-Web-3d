@@ -5,12 +5,15 @@ import "./index.css";
 import { ModelA } from "./ModelA";
 import Model from "./Model";
 import { Parafuso } from "./Parafuso";
+import { ParafusoB } from "./Parafuso2";
 
 function App() {
+  const [isClicked, setIsClicked] = useState(false);
+  const [isClickedB, setIsClickedB] = useState(false);
   return (
     <div className="wrapper">
       <Canvas
-        camera={{ fov: 70, position: [0, 0, 15] }}
+        camera={{ fov: 70, position: [80, 20, 55] }}
         style={{ backgroundColor: "black", height: 400 }}
       >
         <Suspense fallback={null}>
@@ -27,9 +30,17 @@ function App() {
             intensity={2}
             shadowBias={-0.0001}
           />
-          <ModelA />
-          <Parafuso />
-
+          <ModelA isClicked={isClicked | isClickedB} />
+          <Parafuso
+            isClicked={isClicked}
+            setIsClicked={setIsClicked}
+            visible={!isClickedB}
+          />
+          <ParafusoB
+            isClicked={isClickedB}
+            setIsClicked={setIsClickedB}
+            visible={!isClicked}
+          />
           <OrbitControls
             enablePan={true}
             enableZoom={true}
