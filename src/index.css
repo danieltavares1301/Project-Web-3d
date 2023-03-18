@@ -13,7 +13,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: #3c43bf;
+  background-color: blue;
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

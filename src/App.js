@@ -1,79 +1,35 @@
-import { Suspense, useRef } from "react";
+import { Suspense, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { OrbitControls, useGLTF, Text } from "@react-three/drei";
 import "./index.css";
-
-function Model({ ...props }) {
-  const group = useRef();
-  const { nodes, materials } = useGLTF("/demo-text.glb");
-
-  useFrame(({ clock }) => {
-    group.current.rotation.x = clock.getElapsedTime();
-  });
-  return (
-    <group ref={group} {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]} scale={1}>
-        <mesh
-          geometry={nodes["3D_Text_-_D"].geometry}
-          material={nodes["3D_Text_-_D"].material}
-          position={[-20.49, 1.55, 0.32]}
-          scale={0.21}
-        />
-        <mesh
-          geometry={nodes["3D_Text_-_e"].geometry}
-          material={nodes["3D_Text_-_e"].material}
-          position={[-14.18, 1.55, 0.12]}
-          scale={0.21}
-        />
-        <mesh
-          geometry={nodes["3D_Text_-_e_1"].geometry}
-          material={nodes["3D_Text_-_e_1"].material}
-          position={[8.09, 1.55, 0.12]}
-          scale={0.21}
-        />
-        <mesh
-          geometry={nodes["3D_Text_-_m"].geometry}
-          material={nodes["3D_Text_-_m"].material}
-          position={[-10.13, 1.55, 0.12]}
-          scale={0.21}
-        />
-        <mesh
-          geometry={nodes["3D_Text_-_o"].geometry}
-          material={nodes["3D_Text_-_o"].material}
-          position={[-2.81, 1.55, 0.12]}
-          scale={0.21}
-        />
-        <mesh
-          geometry={nodes["3D_Text_-_T"].geometry}
-          material={nodes["3D_Text_-_T"].material}
-          position={[3.18, 1.55, 0.12]}
-          scale={0.21}
-        />
-        <mesh
-          geometry={nodes["3D_Text_-_x"].geometry}
-          material={nodes["3D_Text_-_x"].material}
-          position={[12.13, 1.55, 0.12]}
-          scale={0.21}
-        />
-        <mesh
-          geometry={nodes["3D_Text_-_t"].geometry}
-          material={nodes["3D_Text_-_t"].material}
-          position={[16.06, 1.55, 0.12]}
-          scale={0.21}
-        />
-      </group>
-    </group>
-  );
-}
+import { ModelA } from "./ModelA";
+import Model from "./Model";
+import { Parafuso } from "./Parafuso";
 
 function App() {
   return (
     <div className="wrapper">
-      <Canvas camera={{ fov: 70, position: [0, 0, 15] }} style={{}}>
+      <Canvas
+        camera={{ fov: 70, position: [0, 0, 15] }}
+        style={{ backgroundColor: "black", height: 400 }}
+      >
         <Suspense fallback={null}>
-          <ambientLight />
-          <directionalLight intensity={2} position={[0, 0, 50]} />
-          <Model />
+          <ambientLight intensity={1} />
+          <directionalLight intensity={1.2} position={[0, 0, 50]} />
+          <directionalLight intensity={1.2} position={[0, 0, -50]} />
+          <directionalLight intensity={0.5} position={[50, 0, 0]} />
+          <directionalLight intensity={0.5} position={[-50, 0, 0]} />
+          <spotLight
+            position={[0, 25, 0]}
+            angle={1.3}
+            penumbra={1}
+            castShadow
+            intensity={2}
+            shadowBias={-0.0001}
+          />
+          <ModelA />
+          <Parafuso />
+
           <OrbitControls
             enablePan={true}
             enableZoom={true}
