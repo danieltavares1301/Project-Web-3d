@@ -19,7 +19,7 @@ const TextObj = ({ isClicked, X, Y, Z, text }) => {
       anchorX="center" // default
       anchorY="middle" // default
       position={[X, Y, Z]}
-      visible={!isClicked}
+      visible={isClicked}
     >
       {text}
     </Text>
@@ -31,7 +31,7 @@ export function Parafuso(props) {
   const [isClicked, setIsClicked] = useState(false);
   const mesh = useRef();
   useFrame(({ clock }) =>
-    !isClicked
+    isClicked
       ? (mesh.current.rotation.z = clock.getElapsedTime())
       : mesh.current.rotation.z
   );
@@ -65,7 +65,7 @@ export function Parafuso(props) {
         geometry={nodes.Object_2.geometry}
         material={materials.PARAFUSO_material}
         rotation={[-Math.PI / -2, 0, 0]}
-        position={isClicked ? [0, -25, 0] : [0, 25, 0]}
+        position={isClicked ? [0, 25, 0] : [0, -25, 0]}
         onClick={() => {
           isClicked ? setIsClicked(false) : setIsClicked(true);
         }}
