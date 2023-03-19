@@ -1,18 +1,47 @@
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import "../../index.css";
 import ButtonObj3D from "../../components/buttonObj3D";
 import { IndustrialRobot } from "../../components/industrialRobot";
 
-function EquipamentoAlumarPage() {
-  const [isClicked, setIsClicked] = useState(false);
-  const [isClickedB, setIsClickedB] = useState(false);
+function IndustrialRobotPage() {
   const [showPecas, setShowPecas] = useState(false);
+  const [baseClicked, setBaseClicked] = useState(false);
+  const [cilindroBaseClicked, setCilindroBaseClicked] = useState(false);
+  const [cilindroPecaPrincClicked, setCilindroPecaPrincClicked] =
+    useState(false);
+  const [pecaRetaBracoClicked, setPecaRetaBracoClicked] = useState(false);
+  const [ganchoBracoClicked, setGanchoBracoClicked] = useState(false);
+  const [baseMeioClicked, setBaseMeioClicked] = useState(false);
+  const [visibledAll, setVisibledAll] = useState(false);
+
+  useEffect(() => {
+    setVisibledAll(
+      baseClicked ||
+        cilindroBaseClicked ||
+        cilindroPecaPrincClicked ||
+        pecaRetaBracoClicked ||
+        ganchoBracoClicked ||
+        baseMeioClicked
+    );
+  }, [
+    baseClicked,
+    cilindroBaseClicked,
+    cilindroPecaPrincClicked,
+    pecaRetaBracoClicked,
+    ganchoBracoClicked,
+    baseMeioClicked,
+  ]);
 
   const returnObjOriginal = () => {
-    setIsClicked(false);
-    setIsClickedB(false);
+    setBaseClicked(false);
+    setCilindroBaseClicked(false);
+    setCilindroPecaPrincClicked(false);
+    setPecaRetaBracoClicked(false);
+    setGanchoBracoClicked(false);
+    setBaseMeioClicked(false);
+    setVisibledAll(false);
   };
 
   return (
@@ -44,7 +73,7 @@ function EquipamentoAlumarPage() {
           <ButtonObj3D
             title={"Sair do zoom"}
             onClick={() => returnObjOriginal()}
-            disabled={!(isClicked | isClickedB)}
+            disabled={!visibledAll}
           />
         </div>
         <Canvas
@@ -65,7 +94,24 @@ function EquipamentoAlumarPage() {
               intensity={2}
               shadowBias={-0.0001}
             />
-            <IndustrialRobot />
+            <IndustrialRobot
+              baseClicked={baseClicked}
+              setBaseClicked={setBaseClicked}
+              cilindroBaseClicked={cilindroBaseClicked}
+              setCilindroBaseClicked={setCilindroBaseClicked}
+              cilindroPecaPrincClicked={cilindroPecaPrincClicked}
+              setCilindroPecaPrincClicked={setCilindroPecaPrincClicked}
+              ganchoBracoClicked={ganchoBracoClicked}
+              setGanchoBracoClicked={setGanchoBracoClicked}
+              pecaRetaBracoClicked={pecaRetaBracoClicked}
+              setPecaRetaBracoClicked={setPecaRetaBracoClicked}
+              setShowPecas={setShowPecas}
+              setVisibledAll={setVisibledAll}
+              visibledAll={visibledAll}
+              baseMeioClicked={baseMeioClicked}
+              setBaseMeioClicked={setBaseMeioClicked}
+              showPecas={showPecas}
+            />
             <OrbitControls
               enablePan={true}
               enableZoom={true}
@@ -78,4 +124,4 @@ function EquipamentoAlumarPage() {
   );
 }
 
-export default EquipamentoAlumarPage;
+export default IndustrialRobotPage;

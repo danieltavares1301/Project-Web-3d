@@ -7,18 +7,73 @@ Source: https://sketchfab.com/3d-models/industrial-robot-e5e6703e7788417e9761eb4
 Title: Industrial Robot
 */
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
+import { useSpring, a } from "@react-spring/three";
 
-export function IndustrialRobot(props) {
+export function IndustrialRobot({
+  baseClicked,
+  setBaseClicked,
+  cilindroBaseClicked,
+  setCilindroBaseClicked,
+  cilindroPecaPrincClicked,
+  setCilindroPecaPrincClicked,
+  pecaRetaBracoClicked,
+  setPecaRetaBracoClicked,
+  ganchoBracoClicked,
+  setGanchoBracoClicked,
+  visibledAll,
+  setVisibledAll,
+  showPecas,
+  setShowPecas,
+  baseMeioClicked,
+  setBaseMeioClicked,
+}) {
   const { nodes, materials } = useGLTF("/industrial_robot.glb");
+
+  const baseSpring = useSpring({
+    position: showPecas ? [0, -19.6, 0] : [0, -6.6, 0],
+    scale: baseClicked || !visibledAll ? 100 : 0,
+  });
+
+  const cilindroBaseSpring = useSpring({
+    position: showPecas ? [-0.11, 0.1, 0.24] : [-0.11, 0.1, 0.14],
+    scale: cilindroBaseClicked || !visibledAll ? 1 : 0,
+  });
+
+  const cilindroPecaPrincSpring = useSpring({
+    position: showPecas ? [-0.15, -0.17, 0.24] : [0.02, -0.17, 0.24],
+    scale: cilindroPecaPrincClicked || !visibledAll ? 1 : 0,
+  });
+
+  const pecaRetaBracoSpring = useSpring({
+    position: showPecas ? [-5.91, 66.94, -31.83] : [5.91, 66.94, -31.83],
+    scale: pecaRetaBracoClicked || !visibledAll ? 100 : 0,
+  });
+
+  const ganchoBracoSpring = useSpring({
+    position: showPecas ? [-14.11, 75.34, 56.28] : [-3.11, 75.34, 46.28],
+    scale: ganchoBracoClicked || !visibledAll ? 100 : 0,
+  });
+
+  const baseMeioASpring = useSpring({
+    scale: baseMeioClicked || !visibledAll ? 1 : 0,
+  });
+
+  const baseMeioBSpring = useSpring({
+    scale: baseMeioClicked || !visibledAll ? 100 : 0,
+  });
+
   return (
-    <group {...props} dispose={null}>
+    <group dispose={null}>
       <group scale={0.5}>
-        <group
-          position={[0, -6.6, 0]}
+        <a.group
+          position={baseSpring.position}
           rotation={[-Math.PI / 2, 0, 0]}
-          scale={100}
+          scale={baseSpring.scale}
+          onClick={() => {
+            setBaseClicked(true);
+          }}
         >
           <mesh
             geometry={nodes.foundation_low_base_0.geometry}
@@ -34,13 +89,20 @@ export function IndustrialRobot(props) {
             material={materials.base}
             position={[0, 0, 0.16]}
           />
-        </group>
+        </a.group>
         <group
           position={[0.33, 12.67, 0.33]}
           rotation={[-Math.PI / 2, 0, 0]}
           scale={100}
         >
-          <group position={[-0.11, 0.1, 0.14]}>
+          {/* cilindro da base  */}
+          <a.group
+            position={cilindroBaseSpring.position}
+            scale={cilindroBaseSpring.scale}
+            onClick={() => {
+              setCilindroBaseClicked(true);
+            }}
+          >
             <mesh
               geometry={nodes.engine2_low_Engine_0.geometry}
               material={materials.Engine}
@@ -49,10 +111,15 @@ export function IndustrialRobot(props) {
               geometry={nodes.Cylinder004_Engine_0.geometry}
               material={materials.Engine}
             />
-          </group>
-          <group
-            position={[0.02, -0.17, 0.24]}
+          </a.group>
+          {/* cilindro peça principal*/}
+          <a.group
+            position={cilindroPecaPrincSpring.position}
             rotation={[-Math.PI / 2, -Math.PI / 2, 0]}
+            scale={cilindroPecaPrincSpring.scale}
+            onClick={() => {
+              setCilindroPecaPrincClicked(true);
+            }}
           >
             <mesh
               geometry={nodes.engine_low_Engine_0.geometry}
@@ -62,60 +129,70 @@ export function IndustrialRobot(props) {
               geometry={nodes.Cylinder005_Engine_0.geometry}
               material={materials.Engine}
             />
-          </group>
-          <mesh
-            geometry={nodes.Base_low_arm_0.geometry}
-            material={materials.material}
-          />
-          <mesh
-            geometry={nodes.BigCyl_low_arm_0.geometry}
-            material={materials.material}
-            position={[0.13, 0.16, 0.25]}
-            rotation={[Math.PI / 6, 0, 0]}
-          />
-          <mesh
-            geometry={nodes.decal_low_arm_0.geometry}
-            material={materials.material}
-            position={[0.22, -0.07, 0.12]}
-          />
-          <mesh
-            geometry={nodes.decal3_low_arm_0.geometry}
-            material={materials.material}
-            position={[0.02, -0.01, 0.13]}
-          />
-          <mesh
-            geometry={nodes.decal2_low_arm_0.geometry}
-            material={materials.material}
-            position={[0.22, 0.16, 0.25]}
-          />
-          <mesh
-            geometry={nodes.wire2_low_arm_0.geometry}
-            material={materials.material}
-            position={[-0.08, -0.07, 0.14]}
-            rotation={[0, 0, -1.22]}
-          />
-          <mesh
-            geometry={nodes.prop_low_arm_0.geometry}
-            material={materials.material}
-            position={[0.01, 0.09, 0.13]}
-          />
-          <mesh
-            geometry={nodes.wire_low_arm_0.geometry}
-            material={materials.material}
-            position={[-0.03, -0.08, 0.16]}
-            rotation={[0, 0, -1.22]}
-          />
-          <mesh
-            geometry={nodes.wire3_low_arm_0.geometry}
-            material={materials.material}
-            position={[-0.1, -0.05, 0.15]}
-            rotation={[0, 0, -1.22]}
-          />
+          </a.group>
+          <a.group
+            scale={baseMeioASpring.scale}
+            onClick={() => {
+              setBaseMeioClicked(true);
+            }}
+          >
+            <mesh
+              geometry={nodes.Base_low_arm_0.geometry}
+              material={materials.material}
+            />
+            <mesh
+              geometry={nodes.BigCyl_low_arm_0.geometry}
+              material={materials.material}
+              position={[0.13, 0.16, 0.25]}
+              rotation={[Math.PI / 6, 0, 0]}
+            />
+            <mesh
+              geometry={nodes.decal_low_arm_0.geometry}
+              material={materials.material}
+              position={[0.22, -0.07, 0.12]}
+            />
+            <mesh
+              geometry={nodes.decal3_low_arm_0.geometry}
+              material={materials.material}
+              position={[0.02, -0.01, 0.13]}
+            />
+            <mesh
+              geometry={nodes.decal2_low_arm_0.geometry}
+              material={materials.material}
+              position={[0.22, 0.16, 0.25]}
+            />
+            <mesh
+              geometry={nodes.wire2_low_arm_0.geometry}
+              material={materials.material}
+              position={[-0.08, -0.07, 0.14]}
+              rotation={[0, 0, -1.22]}
+            />
+            <mesh
+              geometry={nodes.prop_low_arm_0.geometry}
+              material={materials.material}
+              position={[0.01, 0.09, 0.13]}
+            />
+            <mesh
+              geometry={nodes.wire_low_arm_0.geometry}
+              material={materials.material}
+              position={[-0.03, -0.08, 0.16]}
+              rotation={[0, 0, -1.22]}
+            />
+            <mesh
+              geometry={nodes.wire3_low_arm_0.geometry}
+              material={materials.material}
+              position={[-0.1, -0.05, 0.15]}
+              rotation={[0, 0, -1.22]}
+            />
+          </a.group>
         </group>
-        <group
+        <a.group
           position={[14.47, 36.9, 17.46]}
           rotation={[-0.97, 0, 0]}
-          scale={100}
+          scale={baseMeioBSpring.scale}
+          onClick={() => {
+            setBaseMeioClicked(true);
+          }}
         >
           <mesh
             geometry={nodes.arm_low_arm_0.geometry}
@@ -143,11 +220,15 @@ export function IndustrialRobot(props) {
             position={[0, 0.58, -0.03]}
             rotation={[-0.6, -Math.PI / 2, 0]}
           />
-        </group>
-        <group
-          position={[5.91, 66.94, -31.83]}
+        </a.group>
+        {/* parte reta de cima do braço*/}
+        <a.group
+          position={pecaRetaBracoSpring.position}
           rotation={[-Math.PI / 2, 0, 0]}
-          scale={100}
+          scale={pecaRetaBracoSpring.scale}
+          onClick={() => {
+            setPecaRetaBracoClicked(true);
+          }}
         >
           <mesh
             geometry={nodes.arm2_low_arm_0.geometry}
@@ -221,11 +302,14 @@ export function IndustrialRobot(props) {
             rotation={[-Math.PI / 2, 0, 0]}
             scale={0.6}
           />
-        </group>
-        <group
-          position={[-3.11, 75.34, 46.28]}
+        </a.group>
+        <a.group
+          position={ganchoBracoSpring.position}
           rotation={[-Math.PI / 2, 0, 0]}
-          scale={100}
+          scale={ganchoBracoSpring.scale}
+          onClick={() => {
+            setGanchoBracoClicked(true);
+          }}
         >
           <mesh
             geometry={nodes.ToolRotation_low_tool_0.geometry}
@@ -235,7 +319,7 @@ export function IndustrialRobot(props) {
             geometry={nodes.Tool_low_tool_0.geometry}
             material={materials.tool}
           />
-        </group>
+        </a.group>
       </group>
     </group>
   );
