@@ -64,6 +64,10 @@ export function ParafusoA({ isClicked, setIsClicked, visible, showPecas }) {
     scale: visible ? [0.5, 0.4, 0.5] : [0, 0, 0],
   });
 
+  const meshPSpring = useSpring({
+    color: showPecas & !isClicked ? "#d6d66e" : "#aaa",
+  });
+
   return (
     <a.group dispose={null} scale={groupSpring.scale} visible={visible}>
       <mesh>
@@ -100,9 +104,9 @@ export function ParafusoA({ isClicked, setIsClicked, visible, showPecas }) {
           setIsClicked(true);
         }}
       >
-        <meshPhysicalMaterial
+        <a.meshPhysicalMaterial
           ref={meshPhysicalMaterial}
-          color="#aaa"
+          color={meshPSpring.color}
           roughness={0.2}
           metalness={0.9}
           reflectivity={0.5}

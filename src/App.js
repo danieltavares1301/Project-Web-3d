@@ -30,7 +30,6 @@ function App() {
       <div className="wrapper">
         <div
           style={{
-            backgroundColor: "white",
             width: "100%",
             display: "flex",
             flexDirection: "row",
@@ -52,7 +51,7 @@ function App() {
         </div>
         <Canvas
           camera={{ fov: 70, position: [80, 20, 55] }}
-          style={{ backgroundColor: "black", height: 500 }}
+          style={{ height: 500 }}
         >
           <Suspense fallback={null}>
             <ambientLight intensity={1} />
