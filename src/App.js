@@ -1,12 +1,11 @@
-import { Suspense, useRef, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Text } from "@react-three/drei";
+import { Suspense, useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import "./index.css";
-import { EquipamentoAlumar } from "./src/components/equipamentoAlumar";
-import Model from "./Model";
-import { ParafusoA } from "./src/components/parafusoA";
-import { ParafusoB } from "./src/components/parafusoB";
-import ButtonObj3D from "./src/components/buttonObj3D";
+import { EquipamentoAlumar } from "./components/equipamentoAlumar";
+import { ParafusoA } from "./components/parafusoA";
+import { ParafusoB } from "./components/parafusoB";
+import ButtonObj3D from "./components/buttonObj3D";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);

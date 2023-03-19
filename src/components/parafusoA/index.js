@@ -7,9 +7,9 @@ Source: https://sketchfab.com/3d-models/parafuso-screw-7c122638fdc6420490cafa944
 Title: PARAFUSO - SCREW
 */
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useGLTF, Text } from "@react-three/drei";
-import { useFrame, Canvas } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useSpring, a } from "@react-spring/three";
 
 const TextObj = ({ isClicked, X, Y, Z, text }) => {
