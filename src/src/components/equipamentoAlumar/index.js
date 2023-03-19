@@ -7,8 +7,8 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 
-export function ModelA({ visible }) {
-  const { nodes, materials } = useGLTF("/exemplo1.glb");
+export function EquipamentoAlumar({ visible }) {
+  const { nodes, materials } = useGLTF("/equipamentoAlumar.glb");
 
   const spring = useSpring({
     scale: visible ? [0, 0, 0] : [1, 1, 1],
@@ -3528,4 +3528,4 @@ export function ModelA({ visible }) {
   );
 }
 
-useGLTF.preload("/exemplo1.glb");
+useGLTF.preload("/equipamentoAlumar.glb");

@@ -27,7 +27,7 @@ const TextObj = ({ isClicked, X, Y, Z, text }) => {
   );
 };
 
-export function Parafuso({ isClicked, setIsClicked, visible, showPecas }) {
+export function ParafusoA({ isClicked, setIsClicked, visible, showPecas }) {
   const { nodes, materials } = useGLTF("/parafuso.glb");
   const mesh = useRef();
   const meshPhysicalMaterial = useRef();

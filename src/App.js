@@ -2,10 +2,11 @@ import { Suspense, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Text } from "@react-three/drei";
 import "./index.css";
-import { ModelA } from "./ModelA";
+import { EquipamentoAlumar } from "./src/components/equipamentoAlumar";
 import Model from "./Model";
-import { Parafuso } from "./Parafuso";
-import { ParafusoB } from "./Parafuso2";
+import { ParafusoA } from "./src/components/parafusoA";
+import { ParafusoB } from "./src/components/parafusoB";
+import ButtonObj3D from "./src/components/buttonObj3D";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
@@ -38,19 +39,17 @@ function App() {
             justifyContent: "flex-start",
           }}
         >
-          <button
+          <ButtonObj3D
+            title={"Mostrar peças"}
             onClick={() =>
               showPecas ? setShowPecas(false) : setShowPecas(true)
             }
-          >
-            Mostrar peças
-          </button>
-          <button
+          />
+          <ButtonObj3D
+            title={"Sair do zoom"}
             onClick={() => returnObjOriginal()}
             disabled={!(isClicked | isClickedB)}
-          >
-            Sair do Zoom
-          </button>
+          />
         </div>
         <Canvas
           camera={{ fov: 70, position: [80, 20, 55] }}
@@ -70,8 +69,8 @@ function App() {
               intensity={2}
               shadowBias={-0.0001}
             />
-            <ModelA visible={isClicked | isClickedB} />
-            <Parafuso
+            <EquipamentoAlumar visible={isClicked | isClickedB} />
+            <ParafusoA
               isClicked={isClicked}
               setIsClicked={setIsClicked}
               visible={!isClickedB}
