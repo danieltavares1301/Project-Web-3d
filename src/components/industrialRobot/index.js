@@ -7,8 +7,24 @@ Source: https://sketchfab.com/3d-models/industrial-robot-e5e6703e7788417e9761eb4
 Title: Industrial Robot
 */
 
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, Text } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
+
+const TextObj = ({ isClicked, X, Y, Z, text, scale, rotation }) => {
+  return (
+    <Text
+      scale={scale}
+      color="white" // default
+      anchorX="center" // default
+      anchorY="middle" // default
+      position={[X, Y, Z]}
+      visible={isClicked}
+      rotation={rotation}
+    >
+      {text}
+    </Text>
+  );
+};
 
 export function IndustrialRobot({
   baseClicked,
@@ -77,7 +93,16 @@ export function IndustrialRobot({
           <mesh
             geometry={nodes.foundation_low_base_0.geometry}
             material={materials.base}
-          />
+          >
+            <TextObj
+              X={0.7}
+              Y={0}
+              Z={0}
+              isClicked={baseClicked && (baseClicked || !visibledAll)}
+              text={"Base XYZ"}
+              scale={[1.6, 1.6, 1.6]}
+            />
+          </mesh>
           <mesh
             geometry={nodes.screw_low_base_0.geometry}
             material={materials.base}
@@ -105,7 +130,18 @@ export function IndustrialRobot({
             <mesh
               geometry={nodes.engine2_low_Engine_0.geometry}
               material={materials.Engine}
-            />
+            >
+              <TextObj
+                X={0.6}
+                Y={0}
+                Z={0}
+                isClicked={
+                  cilindroBaseClicked && (cilindroBaseClicked || !visibledAll)
+                }
+                text={"Cilindro XYZ 1"}
+                scale={[1.3, 1.3, 1.3]}
+              />
+            </mesh>
             <mesh
               geometry={nodes.Cylinder004_Engine_0.geometry}
               material={materials.Engine}
@@ -123,7 +159,20 @@ export function IndustrialRobot({
             <mesh
               geometry={nodes.engine_low_Engine_0.geometry}
               material={materials.Engine}
-            />
+            >
+              <TextObj
+                X={0.85}
+                Y={0}
+                Z={0}
+                isClicked={
+                  cilindroPecaPrincClicked &&
+                  (cilindroPecaPrincClicked || !visibledAll)
+                }
+                text={"Cilindro Horizontal XYZ 2"}
+                scale={[1.1, 1.1, 1.1]}
+                rotation={[0, 0, -Math.PI / 1]}
+              />
+            </mesh>
             <mesh
               geometry={nodes.Cylinder005_Engine_0.geometry}
               material={materials.Engine}
