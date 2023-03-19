@@ -7,11 +7,11 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 
-export function ModelA({ isClicked }) {
+export function ModelA({ visible }) {
   const { nodes, materials } = useGLTF("/exemplo1.glb");
 
   const spring = useSpring({
-    scale: isClicked ? [0, 0, 0] : [1, 1, 1],
+    scale: visible ? [0, 0, 0] : [1, 1, 1],
   });
 
   return (

@@ -27,7 +27,7 @@ const TextObj = ({ isClicked, X, Y, Z, text }) => {
   );
 };
 
-export function Parafuso({ isClicked, setIsClicked, visible }) {
+export function Parafuso({ isClicked, setIsClicked, visible, showPecas }) {
   const { nodes, materials } = useGLTF("/parafuso.glb");
   const mesh = useRef();
   const meshPhysicalMaterial = useRef();
@@ -53,15 +53,19 @@ export function Parafuso({ isClicked, setIsClicked, visible }) {
     }
   };
 
-  setInterval(() => segundo(), 100); */
+  if (showPecas) setInterval(() => segundo(), 100); */
 
   // faz com que o parafuso mude de posição lentamente
   const meshSpring = useSpring({
     position: isClicked ? [0, 25, 0] : [0, -25, 0],
   });
 
+  const groupSpring = useSpring({
+    scale: visible ? [0.5, 0.4, 0.5] : [0, 0, 0],
+  });
+
   return (
-    <group dispose={null} scale={[0.5, 0.4, 0.5]} visible={visible}>
+    <a.group dispose={null} scale={groupSpring.scale} visible={visible}>
       <mesh>
         <TextObj
           X={15}
@@ -93,7 +97,7 @@ export function Parafuso({ isClicked, setIsClicked, visible }) {
         rotation={[-Math.PI / -2, 0, 0]}
         position={meshSpring.position}
         onClick={() => {
-          isClicked ? setIsClicked(false) : setIsClicked(true);
+          setIsClicked(true);
         }}
       >
         <meshPhysicalMaterial
@@ -107,7 +111,7 @@ export function Parafuso({ isClicked, setIsClicked, visible }) {
           iridescenseThicknessRange={[100, 1000]}
         />
       </a.mesh>
-    </group>
+    </a.group>
   );
 }
 
