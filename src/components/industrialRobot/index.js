@@ -7,7 +7,6 @@ Source: https://sketchfab.com/3d-models/industrial-robot-e5e6703e7788417e9761eb4
 Title: Industrial Robot
 */
 
-import React, { useEffect, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 
