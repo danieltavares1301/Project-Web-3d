@@ -132,14 +132,15 @@ export function IndustrialRobot({
               material={materials.Engine}
             >
               <TextObj
-                X={0.6}
+                X={-0.55}
                 Y={0}
-                Z={0}
+                Z={0.1}
                 isClicked={
                   cilindroBaseClicked && (cilindroBaseClicked || !visibledAll)
                 }
                 text={"Cilindro XYZ 1"}
                 scale={[1.3, 1.3, 1.3]}
+                rotation={[1.6, 3.1, 0]}
               />
             </mesh>
             <mesh
@@ -161,15 +162,15 @@ export function IndustrialRobot({
               material={materials.Engine}
             >
               <TextObj
-                X={0.85}
+                X={-0.55}
                 Y={0}
-                Z={0}
+                Z={0.15}
                 isClicked={
                   cilindroPecaPrincClicked &&
                   (cilindroPecaPrincClicked || !visibledAll)
                 }
-                text={"Cilindro Horizontal XYZ 2"}
-                scale={[1.1, 1.1, 1.1]}
+                text={"Cilindro Horizontal XYZ"}
+                scale={[0.9, 1.1, 1.1]}
                 rotation={[0, 0, -Math.PI / 1]}
               />
             </mesh>
@@ -187,7 +188,17 @@ export function IndustrialRobot({
             <mesh
               geometry={nodes.Base_low_arm_0.geometry}
               material={materials.material}
-            />
+            >
+              <TextObj
+                X={-0.65}
+                Y={0}
+                Z={0}
+                isClicked={baseMeioClicked && (baseMeioClicked || !visibledAll)}
+                text={"Base Principal"}
+                scale={[1.1, 1.1, 1.1]}
+                rotation={[0, 0, -Math.PI / 1]}
+              />
+            </mesh>
             <mesh
               geometry={nodes.BigCyl_low_arm_0.geometry}
               material={materials.material}
@@ -246,6 +257,7 @@ export function IndustrialRobot({
             geometry={nodes.arm_low_arm_0.geometry}
             material={materials.material}
           />
+
           <mesh
             geometry={nodes.decal4_low_arm_0.geometry}
             material={materials.material}
@@ -281,7 +293,19 @@ export function IndustrialRobot({
           <mesh
             geometry={nodes.arm2_low_arm_0.geometry}
             material={materials.material}
-          />
+          >
+            <TextObj
+              X={-0.35}
+              Y={0}
+              Z={0}
+              isClicked={
+                pecaRetaBracoClicked && (pecaRetaBracoClicked || !visibledAll)
+              }
+              text={"Braço"}
+              scale={[1.1, 1.1, 1.1]}
+              rotation={[1.65, 0, 0]}
+            />
+          </mesh>
           <mesh
             geometry={nodes.screw5_low_arm_0.geometry}
             material={materials.material}
@@ -362,7 +386,19 @@ export function IndustrialRobot({
           <mesh
             geometry={nodes.ToolRotation_low_tool_0.geometry}
             material={materials.tool}
-          />
+          >
+            <TextObj
+              X={-0.35}
+              Y={0}
+              Z={0}
+              isClicked={
+                ganchoBracoClicked && (ganchoBracoClicked || !visibledAll)
+              }
+              text={"Gancho"}
+              scale={[1.1, 1.1, 1.1]}
+              rotation={[1.4, 0, 0]}
+            />
+          </mesh>
           <mesh
             geometry={nodes.Tool_low_tool_0.geometry}
             material={materials.tool}
