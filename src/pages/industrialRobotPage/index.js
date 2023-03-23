@@ -75,6 +75,7 @@ function IndustrialRobotPage() {
             onClick={() => returnObjOriginal()}
             disabled={!visibledAll}
           />
+          <ButtonObj3D title={"Montagem"} onClick={() => {}} />
         </div>
         <Canvas
           camera={{ fov: 70, position: [80, 20, 55] }}

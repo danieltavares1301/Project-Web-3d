@@ -1,9 +1,7 @@
-import IndustrialRobotPage from "./pages/industrialRobotPage";
-import "./index.css";
-import EquipamentoAlumarPage from "./pages/equipamentoAlumar";
+import Router from "./Router";
 
 function App() {
-  return <IndustrialRobotPage />;
+  return <Router />;
 }
 
 export default App;

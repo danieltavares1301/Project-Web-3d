@@ -9,6 +9,7 @@ Title: Industrial Robot
 
 import { useGLTF, Text } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
+import BaseBraco from "./1-baseBraco";
 
 const TextObj = ({ isClicked, X, Y, Z, text, scale, rotation }) => {
   return (
@@ -82,38 +83,15 @@ export function IndustrialRobot({
   return (
     <group dispose={null}>
       <group scale={0.5}>
-        <a.group
-          position={baseSpring.position}
-          rotation={[-Math.PI / 2, 0, 0]}
-          scale={baseSpring.scale}
-          onClick={() => {
-            setBaseClicked(true);
-          }}
-        >
-          <mesh
-            geometry={nodes.foundation_low_base_0.geometry}
-            material={materials.base}
-          >
-            <TextObj
-              X={0.7}
-              Y={0}
-              Z={0}
-              isClicked={baseClicked && (baseClicked || !visibledAll)}
-              text={"Base XYZ"}
-              scale={[1.6, 1.6, 1.6]}
-            />
-          </mesh>
-          <mesh
-            geometry={nodes.screw_low_base_0.geometry}
-            material={materials.base}
-            position={[0, 0, 0.07]}
-          />
-          <mesh
-            geometry={nodes.screw2_low_base_0.geometry}
-            material={materials.base}
-            position={[0, 0, 0.16]}
-          />
-        </a.group>
+        <BaseBraco
+          nodes={nodes}
+          materials={materials}
+          TextObj={TextObj}
+          baseClicked={baseClicked}
+          setBaseClicked={setBaseClicked}
+          baseSpring={baseSpring}
+          visibledAll={visibledAll}
+        />
         <group
           position={[0.33, 12.67, 0.33]}
           rotation={[-Math.PI / 2, 0, 0]}
