@@ -10,6 +10,8 @@ Title: Industrial Robot
 import { useGLTF, Text } from "@react-three/drei";
 import { useSpring, a } from "@react-spring/three";
 import BaseBraco from "./1-baseBraco";
+import BaseMeioB from "./3-baseMeioB";
+import BaseMeioA from "./2-baseMeioA";
 
 const TextObj = ({ isClicked, X, Y, Z, text, scale, rotation }) => {
   return (
@@ -157,108 +159,22 @@ export function IndustrialRobot({
               material={materials.Engine}
             />
           </a.group>
-          <a.group
-            scale={baseMeioASpring.scale}
-            onClick={() => {
-              setBaseMeioClicked(true);
-            }}
-          >
-            <mesh
-              geometry={nodes.Base_low_arm_0.geometry}
-              material={materials.material}
-            >
-              <TextObj
-                X={-0.65}
-                Y={0}
-                Z={0}
-                isClicked={baseMeioClicked && (baseMeioClicked || !visibledAll)}
-                text={"Base Principal"}
-                scale={[1.1, 1.1, 1.1]}
-                rotation={[0, 0, -Math.PI / 1]}
-              />
-            </mesh>
-            <mesh
-              geometry={nodes.BigCyl_low_arm_0.geometry}
-              material={materials.material}
-              position={[0.13, 0.16, 0.25]}
-              rotation={[Math.PI / 6, 0, 0]}
-            />
-            <mesh
-              geometry={nodes.decal_low_arm_0.geometry}
-              material={materials.material}
-              position={[0.22, -0.07, 0.12]}
-            />
-            <mesh
-              geometry={nodes.decal3_low_arm_0.geometry}
-              material={materials.material}
-              position={[0.02, -0.01, 0.13]}
-            />
-            <mesh
-              geometry={nodes.decal2_low_arm_0.geometry}
-              material={materials.material}
-              position={[0.22, 0.16, 0.25]}
-            />
-            <mesh
-              geometry={nodes.wire2_low_arm_0.geometry}
-              material={materials.material}
-              position={[-0.08, -0.07, 0.14]}
-              rotation={[0, 0, -1.22]}
-            />
-            <mesh
-              geometry={nodes.prop_low_arm_0.geometry}
-              material={materials.material}
-              position={[0.01, 0.09, 0.13]}
-            />
-            <mesh
-              geometry={nodes.wire_low_arm_0.geometry}
-              material={materials.material}
-              position={[-0.03, -0.08, 0.16]}
-              rotation={[0, 0, -1.22]}
-            />
-            <mesh
-              geometry={nodes.wire3_low_arm_0.geometry}
-              material={materials.material}
-              position={[-0.1, -0.05, 0.15]}
-              rotation={[0, 0, -1.22]}
-            />
-          </a.group>
+          <BaseMeioA
+            TextObj={TextObj}
+            baseMeioASpring={baseMeioASpring}
+            baseMeioClicked={baseMeioClicked}
+            materials={materials}
+            nodes={nodes}
+            setBaseMeioClicked={setBaseMeioClicked}
+            visibledAll={visibledAll}
+          />
         </group>
-        <a.group
-          position={[14.47, 36.9, 17.46]}
-          rotation={[-0.97, 0, 0]}
-          scale={baseMeioBSpring.scale}
-          onClick={() => {
-            setBaseMeioClicked(true);
-          }}
-        >
-          <mesh
-            geometry={nodes.arm_low_arm_0.geometry}
-            material={materials.material}
-          />
-
-          <mesh
-            geometry={nodes.decal4_low_arm_0.geometry}
-            material={materials.material}
-            position={[0.01, 0.29, 0.02]}
-          />
-          <mesh
-            geometry={nodes.BigWire_low_arm_0.geometry}
-            material={materials.material}
-            position={[0.05, -0.05, -0.11]}
-            rotation={[-0.6, 0, -1.22]}
-          />
-          <mesh
-            geometry={nodes.screw3_low_arm_0.geometry}
-            material={materials.material}
-            rotation={[-0.6, -Math.PI / 2, 0]}
-          />
-          <mesh
-            geometry={nodes.screw4_low_arm_0.geometry}
-            material={materials.material}
-            position={[0, 0.58, -0.03]}
-            rotation={[-0.6, -Math.PI / 2, 0]}
-          />
-        </a.group>
+        <BaseMeioB
+          baseMeioBSpring={baseMeioBSpring}
+          materials={materials}
+          nodes={nodes}
+          setBaseMeioClicked={setBaseMeioClicked}
+        />
         {/* parte reta de cima do braço*/}
         <a.group
           position={pecaRetaBracoSpring.position}
