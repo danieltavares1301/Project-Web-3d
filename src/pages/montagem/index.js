@@ -1,5 +1,5 @@
-import { Suspense, useState, useEffect } from "react";
-import { useSpring } from "@react-spring/three";
+import { Suspense, useState, useEffect, useRef } from "react";
+import { useSpring, a } from "@react-spring/three";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Text } from "@react-three/drei";
 import "../../index.css";
@@ -35,6 +35,17 @@ function Montagem() {
   const [baseMeioClicked, setBaseMeioClicked] = useState(false);
   const [visibledAll, setVisibledAll] = useState(false);
 
+  const [proximo, setProximo] = useState(0);
+
+  const queue = [
+    "base",
+    "baseMeio",
+    "cilindroVertical",
+    "cilindroHorizontal",
+    "pecaRetaBraco",
+    "gancho",
+  ];
+
   useEffect(() => {
     setVisibledAll(
       baseClicked ||
@@ -53,7 +64,7 @@ function Montagem() {
     baseMeioClicked,
   ]);
 
-  /*   const returnObjOriginal = () => {
+  const returnObjOriginal = () => {
     setBaseClicked(false);
     setCilindroBaseClicked(false);
     setCilindroPecaPrincClicked(false);
@@ -61,40 +72,64 @@ function Montagem() {
     setGanchoBracoClicked(false);
     setBaseMeioClicked(false);
     setVisibledAll(false);
-  }; */
+  };
 
   const baseSpring = useSpring({
     position: showPecas ? [0, -19.6, 0] : [0, -6.6, 0],
-    scale: baseClicked || !visibledAll ? 100 : 0,
+    scale: queue.indexOf("base") <= proximo ? 100 : 0,
   });
 
-  /* const cilindroBaseSpring = useSpring({
-    position: showPecas ? [-0.11, 0.1, 0.24] : [-0.11, 0.1, 0.14],
-    scale: cilindroBaseClicked || !visibledAll ? 1 : 0,
+  const cilindroBaseSpring = useSpring({
+    position:
+      queue.indexOf("cilindroVertical") === proximo
+        ? [-0.11, 0.1, 0.34]
+        : [-0.11, 0.1, 0.14],
+    scale: queue.indexOf("cilindroVertical") <= proximo ? 1 : 0,
   });
 
   const cilindroPecaPrincSpring = useSpring({
-    position: showPecas ? [-0.15, -0.17, 0.24] : [0.02, -0.17, 0.24],
-    scale: cilindroPecaPrincClicked || !visibledAll ? 1 : 0,
+    position:
+      queue.indexOf("cilindroHorizontal") === proximo
+        ? [-0.25, -0.17, 0.24]
+        : [0.02, -0.17, 0.24],
+    scale: queue.indexOf("cilindroHorizontal") <= proximo ? 1 : 0,
   });
 
   const pecaRetaBracoSpring = useSpring({
-    position: showPecas ? [-5.91, 66.94, -31.83] : [5.91, 66.94, -31.83],
-    scale: pecaRetaBracoClicked || !visibledAll ? 100 : 0,
+    position:
+      queue.indexOf("pecaRetaBraco") === proximo
+        ? [-8.91, 66.94, -31.83]
+        : [5.91, 66.94, -31.83],
+    scale: queue.indexOf("pecaRetaBraco") <= proximo ? 100 : 0,
   });
 
   const ganchoBracoSpring = useSpring({
-    position: showPecas ? [-14.11, 75.34, 56.28] : [-3.11, 75.34, 46.28],
-    scale: ganchoBracoClicked || !visibledAll ? 100 : 0,
+    position:
+      queue.indexOf("gancho") === proximo
+        ? [-3.11, 75.34, 66.28]
+        : [-3.11, 75.34, 46.28],
+    scale: queue.indexOf("gancho") <= proximo ? 100 : 0,
   });
 
+  /* 
+      queue.indexOf("baseMeio") == proximo
+        ? [(0.33, 13.67, 0.33)]
+        :  */
   const baseMeioASpring = useSpring({
-    scale: baseMeioClicked || !visibledAll ? 1 : 0,
+    position:
+      queue.indexOf("baseMeio") === proximo
+        ? [0.33, 37.67, 0.33]
+        : [0.33, 12.67, 0.33],
+    scale: queue.indexOf("baseMeio") <= proximo ? 100 : 0,
   });
 
   const baseMeioBSpring = useSpring({
-    scale: baseMeioClicked || !visibledAll ? 100 : 0,
-  }); */
+    position:
+      queue.indexOf("baseMeio") === proximo
+        ? [14.47, 62.9, 17.46]
+        : [14.47, 36.9, 17.46],
+    scale: queue.indexOf("baseMeio") <= proximo ? 100 : 0,
+  });
 
   return (
     <div
@@ -116,8 +151,28 @@ function Montagem() {
             justifyContent: "flex-start",
           }}
         >
-          <ButtonObj3D title={"Anterior"} onClick={() => {}} />
-          <ButtonObj3D title={"Próximo"} onClick={() => {}} />
+          <ButtonObj3D
+            title={"Anterior"}
+            onClick={() => setProximo(proximo > 0.5 ? proximo - 1 : 0)}
+          />
+          <ButtonObj3D
+            title={"Próximo"}
+            onClick={() =>
+              setProximo(
+                proximo < queue.length && proximo !== 0
+                  ? proximo + 0.5
+                  : proximo === 0
+                  ? proximo + 1
+                  : proximo
+              )
+            }
+          />
+          <ButtonObj3D
+            title={"Ocultar nome"}
+            onClick={() => returnObjOriginal()}
+            disabled={!visibledAll}
+          />
+          {/*  {gRef.current.position.y === 37.67 ? <div>dad</div> : null} */}
         </div>
         <Canvas
           camera={{ fov: 70, position: [80, 20, 55] }}
@@ -148,6 +203,299 @@ function Montagem() {
                   visibledAll={visibledAll}
                   TextObj={TextObj}
                 />
+                <a.group
+                  position={baseMeioASpring.position}
+                  rotation={[-Math.PI / 2, 0, 0]}
+                  scale={baseMeioASpring.scale}
+                >
+                  {/* cilindro vertical */}
+                  <a.group
+                    position={cilindroBaseSpring.position}
+                    scale={cilindroBaseSpring.scale}
+                    onClick={() => {
+                      setCilindroBaseClicked(true);
+                    }}
+                  >
+                    <mesh
+                      geometry={nodes.engine2_low_Engine_0.geometry}
+                      material={materials.Engine}
+                    >
+                      <TextObj
+                        X={-0.55}
+                        Y={0}
+                        Z={0.1}
+                        isClicked={
+                          cilindroBaseClicked &&
+                          (cilindroBaseClicked || !visibledAll)
+                        }
+                        text={"Cilindro XYZ 1"}
+                        scale={[1.3, 1.3, 1.3]}
+                        rotation={[1.6, 3.1, 0]}
+                      />
+                    </mesh>
+                    <mesh
+                      geometry={nodes.Cylinder004_Engine_0.geometry}
+                      material={materials.Engine}
+                    />
+                  </a.group>
+                  <a.group
+                    position={cilindroPecaPrincSpring.position}
+                    rotation={[-Math.PI / 2, -Math.PI / 2, 0]}
+                    scale={cilindroPecaPrincSpring.scale}
+                    onClick={() => {
+                      setCilindroPecaPrincClicked(true);
+                    }}
+                  >
+                    <mesh
+                      geometry={nodes.engine_low_Engine_0.geometry}
+                      material={materials.Engine}
+                    >
+                      <TextObj
+                        X={-0.55}
+                        Y={0}
+                        Z={0.15}
+                        isClicked={
+                          cilindroPecaPrincClicked &&
+                          (cilindroPecaPrincClicked || !visibledAll)
+                        }
+                        text={"Cilindro Horizontal XYZ"}
+                        scale={[0.9, 1.1, 1.1]}
+                        rotation={[0, 0, -Math.PI / 1]}
+                      />
+                    </mesh>
+                    <mesh
+                      geometry={nodes.Cylinder005_Engine_0.geometry}
+                      material={materials.Engine}
+                    />
+                  </a.group>
+                  <group
+                    scale={1}
+                    onClick={() => {
+                      setBaseMeioClicked(true);
+                    }}
+                  >
+                    <mesh
+                      geometry={nodes.Base_low_arm_0.geometry}
+                      material={materials.material}
+                    >
+                      <TextObj
+                        X={-0.65}
+                        Y={0}
+                        Z={0}
+                        isClicked={
+                          baseMeioClicked && (baseMeioClicked || !visibledAll)
+                        }
+                        text={"Base Principal"}
+                        scale={[1.1, 1.1, 1.1]}
+                        rotation={[0, 0, -Math.PI / 1]}
+                      />
+                    </mesh>
+                    <mesh
+                      geometry={nodes.BigCyl_low_arm_0.geometry}
+                      material={materials.material}
+                      position={[0.13, 0.16, 0.25]}
+                      rotation={[Math.PI / 6, 0, 0]}
+                    />
+                    <mesh
+                      geometry={nodes.decal_low_arm_0.geometry}
+                      material={materials.material}
+                      position={[0.22, -0.07, 0.12]}
+                    />
+                    <mesh
+                      geometry={nodes.decal3_low_arm_0.geometry}
+                      material={materials.material}
+                      position={[0.02, -0.01, 0.13]}
+                    />
+                    <mesh
+                      geometry={nodes.decal2_low_arm_0.geometry}
+                      material={materials.material}
+                      position={[0.22, 0.16, 0.25]}
+                    />
+                    <mesh
+                      geometry={nodes.wire2_low_arm_0.geometry}
+                      material={materials.material}
+                      position={[-0.08, -0.07, 0.14]}
+                      rotation={[0, 0, -1.22]}
+                    />
+                    <mesh
+                      geometry={nodes.prop_low_arm_0.geometry}
+                      material={materials.material}
+                      position={[0.01, 0.09, 0.13]}
+                    />
+                    <mesh
+                      geometry={nodes.wire_low_arm_0.geometry}
+                      material={materials.material}
+                      position={[-0.03, -0.08, 0.16]}
+                      rotation={[0, 0, -1.22]}
+                    />
+                    <mesh
+                      geometry={nodes.wire3_low_arm_0.geometry}
+                      material={materials.material}
+                      position={[-0.1, -0.05, 0.15]}
+                      rotation={[0, 0, -1.22]}
+                    />
+                  </group>
+                </a.group>
+                <a.group
+                  position={baseMeioBSpring.position}
+                  rotation={[-0.97, 0, 0]}
+                  scale={baseMeioBSpring.scale}
+                  onClick={() => {
+                    setBaseMeioClicked(true);
+                  }}
+                >
+                  <mesh
+                    geometry={nodes.arm_low_arm_0.geometry}
+                    material={materials.material}
+                  />
+
+                  <mesh
+                    geometry={nodes.decal4_low_arm_0.geometry}
+                    material={materials.material}
+                    position={[0.01, 0.29, 0.02]}
+                  />
+                  <mesh
+                    geometry={nodes.BigWire_low_arm_0.geometry}
+                    material={materials.material}
+                    position={[0.05, -0.05, -0.11]}
+                    rotation={[-0.6, 0, -1.22]}
+                  />
+                  <mesh
+                    geometry={nodes.screw3_low_arm_0.geometry}
+                    material={materials.material}
+                    rotation={[-0.6, -Math.PI / 2, 0]}
+                  />
+                  <mesh
+                    geometry={nodes.screw4_low_arm_0.geometry}
+                    material={materials.material}
+                    position={[0, 0.58, -0.03]}
+                    rotation={[-0.6, -Math.PI / 2, 0]}
+                  />
+                </a.group>
+                <a.group
+                  position={pecaRetaBracoSpring.position}
+                  rotation={[-Math.PI / 2, 0, 0]}
+                  scale={pecaRetaBracoSpring.scale}
+                  onClick={() => {
+                    setPecaRetaBracoClicked(true);
+                  }}
+                >
+                  <mesh
+                    geometry={nodes.arm2_low_arm_0.geometry}
+                    material={materials.material}
+                  >
+                    <TextObj
+                      X={-0.35}
+                      Y={0}
+                      Z={0}
+                      isClicked={
+                        pecaRetaBracoClicked &&
+                        (pecaRetaBracoClicked || !visibledAll)
+                      }
+                      text={"Braço"}
+                      scale={[1.1, 1.1, 1.1]}
+                      rotation={[1.65, 0, 0]}
+                    />
+                  </mesh>
+                  <mesh
+                    geometry={nodes.screw5_low_arm_0.geometry}
+                    material={materials.material}
+                    position={[-0.09, -0.16, 0.08]}
+                    rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
+                  />
+                  <mesh
+                    geometry={nodes.wire4_low_arm_0.geometry}
+                    material={materials.material}
+                    position={[-0.15, -0.02, 0.07]}
+                    rotation={[0, 0, -1.22]}
+                  />
+                  <mesh
+                    geometry={nodes.wire5_low_arm_0.geometry}
+                    material={materials.material}
+                    position={[-0.15, -0.02, 0.05]}
+                    rotation={[0, 0, -1.22]}
+                  />
+                  <mesh
+                    geometry={nodes.wire6_low_arm_0.geometry}
+                    material={materials.material}
+                    position={[-0.16, -0.03, -0.01]}
+                    rotation={[0, 0, -1.22]}
+                  />
+                  <mesh
+                    geometry={nodes.wire7_low_arm_0.geometry}
+                    material={materials.material}
+                    position={[-0.15, -0.03, -0.02]}
+                    rotation={[0, 0, -1.22]}
+                  />
+                  <mesh
+                    geometry={nodes.screw6_low_arm_0.geometry}
+                    material={materials.material}
+                    position={[-0.09, -0.7, 0.08]}
+                    rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
+                  />
+                  <mesh
+                    geometry={nodes.wire8_low_arm_0.geometry}
+                    material={materials.material}
+                    position={[-0.03, -0.12, 0.06]}
+                    rotation={[0, 0, -1.22]}
+                  />
+                  <mesh
+                    geometry={nodes.electricbox_low_arm_0.geometry}
+                    material={materials.material}
+                    position={[-0.05, 0.01, 0.13]}
+                  />
+                  <mesh
+                    geometry={nodes.engine5_low_Engine_0.geometry}
+                    material={materials.Engine}
+                    position={[-0.06, 0, 0]}
+                    rotation={[-Math.PI / 2, -Math.PI / 2, 0]}
+                    scale={0.69}
+                  />
+                  <mesh
+                    geometry={nodes.engine4_low_Engine_0.geometry}
+                    material={materials.Engine}
+                    position={[-0.13, -0.09, 0.06]}
+                    rotation={[-Math.PI / 2, 0, 0]}
+                    scale={0.6}
+                  />
+                  <mesh
+                    geometry={nodes.engine3_low_Engine_0.geometry}
+                    material={materials.Engine}
+                    position={[-0.13, -0.09, 0.12]}
+                    rotation={[-Math.PI / 2, 0, 0]}
+                    scale={0.6}
+                  />
+                </a.group>
+                <a.group
+                  position={ganchoBracoSpring.position}
+                  rotation={[-Math.PI / 2, 0, 0]}
+                  scale={ganchoBracoSpring.scale}
+                  onClick={() => {
+                    setGanchoBracoClicked(true);
+                  }}
+                >
+                  <mesh
+                    geometry={nodes.ToolRotation_low_tool_0.geometry}
+                    material={materials.tool}
+                  >
+                    <TextObj
+                      X={-0.35}
+                      Y={0}
+                      Z={0}
+                      isClicked={
+                        ganchoBracoClicked &&
+                        (ganchoBracoClicked || !visibledAll)
+                      }
+                      text={"Gancho"}
+                      scale={[1.1, 1.1, 1.1]}
+                      rotation={[1.4, 0, 0]}
+                    />
+                  </mesh>
+                  <mesh
+                    geometry={nodes.Tool_low_tool_0.geometry}
+                    material={materials.tool}
+                  />
+                </a.group>
               </group>
             </group>
             <OrbitControls

@@ -4,8 +4,11 @@ import { OrbitControls } from "@react-three/drei";
 import "../../index.css";
 import ButtonObj3D from "../../components/buttonObj3D";
 import { IndustrialRobot } from "../../components/industrialRobot";
+import { useNavigate } from "react-router-dom";
 
 function IndustrialRobotPage() {
+  const navigate = useNavigate();
+
   const [showPecas, setShowPecas] = useState(false);
   const [baseClicked, setBaseClicked] = useState(false);
   const [cilindroBaseClicked, setCilindroBaseClicked] = useState(false);
@@ -75,7 +78,10 @@ function IndustrialRobotPage() {
             onClick={() => returnObjOriginal()}
             disabled={!visibledAll}
           />
-          <ButtonObj3D title={"Montagem"} onClick={() => {}} />
+          <ButtonObj3D
+            title={"Montagem"}
+            onClick={() => navigate("/montagem")}
+          />
         </div>
         <Canvas
           camera={{ fov: 70, position: [80, 20, 55] }}
