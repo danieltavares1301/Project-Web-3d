@@ -24,12 +24,13 @@ export default function BaseBraco({
         material={materials.base}
       >
         <TextObj
-          X={0.7}
+          X={0.55}
           Y={0}
-          Z={0}
+          Z={0.05}
           isClicked={baseClicked && (baseClicked || !visibledAll)}
           text={"Base XYZ"}
-          scale={[1.6, 1.6, 1.6]}
+          scale={[1.1, 1.1, 1.1]}
+          rotation={[1.6, 0, 0]}
         />
       </mesh>
       <mesh

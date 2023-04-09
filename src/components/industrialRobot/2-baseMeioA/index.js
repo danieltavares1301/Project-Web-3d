@@ -22,13 +22,13 @@ export default function BaseMeioA({
         material={materials.material}
       >
         <TextObj
-          X={-0.65}
+          X={0.65}
           Y={0}
-          Z={0}
+          Z={0.2}
           isClicked={baseMeioClicked && (baseMeioClicked || !visibledAll)}
           text={"Base Principal"}
           scale={[1.1, 1.1, 1.1]}
-          rotation={[0, 0, -Math.PI / 1]}
+          rotation={[1.6, 0, 0]}
         />
       </mesh>
       <mesh

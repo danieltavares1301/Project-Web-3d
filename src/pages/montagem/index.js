@@ -221,7 +221,7 @@ function Montagem() {
                       material={materials.Engine}
                     >
                       <TextObj
-                        X={-0.55}
+                        X={-0.45}
                         Y={0}
                         Z={0.1}
                         isClicked={
@@ -229,8 +229,8 @@ function Montagem() {
                           (cilindroBaseClicked || !visibledAll)
                         }
                         text={"Cilindro XYZ 1"}
-                        scale={[1.3, 1.3, 1.3]}
-                        rotation={[1.6, 3.1, 0]}
+                        scale={[1.1, 1.1, 1.1]}
+                        rotation={[1.6, 0, 0]}
                       />
                     </mesh>
                     <mesh
@@ -251,16 +251,16 @@ function Montagem() {
                       material={materials.Engine}
                     >
                       <TextObj
-                        X={-0.55}
+                        X={0}
                         Y={0}
-                        Z={0.15}
+                        Z={0.65}
                         isClicked={
                           cilindroPecaPrincClicked &&
                           (cilindroPecaPrincClicked || !visibledAll)
                         }
                         text={"Cilindro Horizontal XYZ"}
                         scale={[0.9, 1.1, 1.1]}
-                        rotation={[0, 0, -Math.PI / 1]}
+                        rotation={[3.15, -1.6, 0]}
                       />
                     </mesh>
                     <mesh
@@ -279,15 +279,15 @@ function Montagem() {
                       material={materials.material}
                     >
                       <TextObj
-                        X={-0.65}
+                        X={0.65}
                         Y={0}
-                        Z={0}
+                        Z={0.2}
                         isClicked={
                           baseMeioClicked && (baseMeioClicked || !visibledAll)
                         }
                         text={"Base Principal"}
                         scale={[1.1, 1.1, 1.1]}
-                        rotation={[0, 0, -Math.PI / 1]}
+                        rotation={[1.6, 0, 0]}
                       />
                     </mesh>
                     <mesh
