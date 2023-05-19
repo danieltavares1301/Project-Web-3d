@@ -64,7 +64,7 @@ function IndustrialRobotPage() {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            justifyContent: "flex-start",
+            justifyContent: "space-around",
           }}
         >
           <ButtonObj3D

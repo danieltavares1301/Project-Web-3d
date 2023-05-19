@@ -10,4 +10,7 @@
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 2px;
+  height: 60px;
+  align-items: center;
+  display: flex;
 }
