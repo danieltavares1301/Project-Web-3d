@@ -5,6 +5,7 @@ import { OrbitControls, useGLTF, Text } from "@react-three/drei";
 import "../../index.css";
 import ButtonObj3D from "../../components/buttonObj3D";
 import BaseBraco from "../../components/industrialRobot/1-baseBraco";
+import { useNavigate } from "react-router-dom";
 
 const TextObj = ({ isClicked, X, Y, Z, text, scale, rotation }) => {
   return (
@@ -23,6 +24,8 @@ const TextObj = ({ isClicked, X, Y, Z, text, scale, rotation }) => {
 };
 
 function Montagem() {
+  const navigate = useNavigate();
+
   const { nodes, materials } = useGLTF("/industrial_robot.glb");
 
   const [showPecas, setShowPecas] = useState(false);
@@ -149,6 +152,21 @@ function Montagem() {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "flex-start",
+            marginLeft: "10px",
+          }}
+        >
+          <ButtonObj3D
+            title={"Voltar a página anterior"}
+            onClick={() => navigate("/")}
+          />
+        </div>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-around",
           }}
         >
           <ButtonObj3D
