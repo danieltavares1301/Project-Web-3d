@@ -6,8 +6,6 @@ export default function AssinaturaDigital() {
   const [sign, setSign] = useState();
   const [url, setUrl] = useState();
 
-  const disabled = false;
-
   const handleClear = () => {
     sign.clear();
     setUrl("");
@@ -25,7 +23,6 @@ export default function AssinaturaDigital() {
         alignItems: "center",
         justifyContent: "center",
         height: "70vh",
-        //backgroundColor: "#f5f",
       }}
     >
       <div
@@ -41,20 +38,16 @@ export default function AssinaturaDigital() {
         <button
           className="button"
           style={{
-            backgroundColor: disabled
-              ? "rgb(86, 106, 167)"
-              : "rgb(28, 69, 194)",
+            backgroundColor: "rgb(28, 69, 194)",
           }}
           onClick={handleClear}
-          disabled={disabled}
         >
           Limpar
         </button>
         <button
           className="button"
-          style={{ backgroundColor: disabled ? "#667f67" : "#4caf50" }}
+          style={{ backgroundColor: "#4caf50" }}
           onClick={handleGenerate}
-          disabled={disabled}
         >
           Salvar
         </button>
