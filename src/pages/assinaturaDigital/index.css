@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Altura total da viewport */
+}
+
+.content {
+  width: 100%; /* Largura de 90% da div pai (container) */
+  max-width: 800px; /* Largura máxima da div */
+  padding: 20px;
+  border: 2px solid black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
