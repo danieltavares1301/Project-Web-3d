@@ -1,18 +1,30 @@
 import "./index.css";
 import { useState } from "react";
 import SignatureCanvas from "react-signature-canvas";
+import axios from "axios";
 
 export default function AssinaturaDigital() {
   const [sign, setSign] = useState();
-  const [url, setUrl] = useState();
 
   const handleClear = () => {
     sign.clear();
-    setUrl("");
   };
 
-  const handleGenerate = () => {
-    setUrl(sign.getTrimmedCanvas().toDataURL("image/png"));
+  const handleUpload = async () => {
+    const ass = sign.getTrimmedCanvas().toDataURL("image/png");
+    if (ass) {
+      try {
+        await axios.put(
+          "https://rich-jade-crane-suit.cyclic.app/user/6451b0bdd83ae278803706c6",
+          {
+            digitalSignature: ass,
+          }
+        );
+        console.log("Assinatura digital enviada com sucesso!");
+      } catch (error) {
+        console.error("Erro ao enviar a assinatura digital", error);
+      }
+    }
   };
 
   return (
@@ -47,7 +59,7 @@ export default function AssinaturaDigital() {
         <button
           className="button"
           style={{ backgroundColor: "#4caf50" }}
-          onClick={handleGenerate}
+          onClick={handleUpload}
         >
           Salvar
         </button>
