@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import IndustrialRobotPage from "./pages/industrialRobotPage";
 import Montagem from "./pages/montagem";
 import AssinaturaDigital from "./pages/assinaturaDigital";
+import CriaPDF from "./pages/criaPDF";
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
           path="/createDigitalAssignature"
           element={<AssinaturaDigital />}
         />
+        <Route path="/criaPDF" element={<CriaPDF />} />
         <Route path="*" element={<h1>Page Not Found!</h1>} />
       </Routes>
     </BrowserRouter>
