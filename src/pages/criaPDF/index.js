@@ -1,7 +1,7 @@
 import "./index.css";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { logoAlumar } from "../../utils";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -119,7 +119,7 @@ function CriaPDF() {
 
   const [url, setUrl] = useState(null);
 
-  const createPdf = () => {
+  const baixarPdf = () => {
     const pdfGenerator = pdfMake.createPdf(docDefinition);
     pdfGenerator.getBlob((blob) => {
       const url = URL.createObjectURL(blob);
@@ -127,13 +127,25 @@ function CriaPDF() {
     });
     pdfGenerator.download();
   };
+  useEffect(() => {
+    baixarPdf();
+  }, []);
 
+  /*   const verPdf = () => {
+    const pdfGenerator = pdfMake.createPdf(docDefinition);
+    pdfGenerator.getBlob((blob) => {
+      const url = URL.createObjectURL(blob);
+      setUrl(url);
+    });
+    if (url) window.location.assign(url);
+  };
+ */
   return (
     <div className="App">
-      {createPdf}
-      <button onClick={createPdf}>Generate PDF</button>
-      {url && <a href={url}>{url}</a>}
-      <input onChange={(event) => setTag(event.target.value)}></input>
+      {/* {baixarPdf()} */}
+      {/* <button onClick={baixarPdf}>Baixar PDF</button>
+      <button onClick={verPdf}>ver PDF</button> */}
+      {/*  <input onChange={(event) => setTag(event.target.value)}></input> */}
     </div>
   );
 }
