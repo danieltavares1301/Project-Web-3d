@@ -3,6 +3,7 @@ import IndustrialRobotPage from "./pages/industrialRobotPage";
 import Montagem from "./pages/montagem";
 import AssinaturaDigital from "./pages/assinaturaDigital";
 import CriaPDF from "./pages/criaPDF";
+import EquipamentoAR from "./pages/equipamentoAR";
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
           element={<AssinaturaDigital />}
         />
         <Route path="/criaPDF" element={<CriaPDF />} />
+        <Route path="/ar" element={<EquipamentoAR />} />
         <Route path="*" element={<h1>Page Not Found!</h1>} />
       </Routes>
     </BrowserRouter>
